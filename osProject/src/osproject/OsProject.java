@@ -1,9 +1,10 @@
+package osProject_1051.os;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package osproject;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class OsProject{
+public class main_os{
     public static final int readers = 10;
     public static final int writers = 2;
     
@@ -43,12 +44,14 @@ public class OsProject{
 
         for (int i = 0; i < readers; i++) {
             listReader[i] = new Thread(new Reader(i, database));
+            listReader[i].setDaemon(true); //Daemon
             listReader[i].start();
 
         }
 
         for (int i = 0; i < writers; i++) {
             listWriter[i] = new Thread(new Writer(i, database));
+            listReader[i].setDaemon(true); //Daemon
             listWriter[i].start();
 
         }
